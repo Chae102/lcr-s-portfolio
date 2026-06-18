@@ -23,7 +23,7 @@ export function Experience() {
           const Icon = experience.category === "Award" ? Award : Sparkle;
 
           return (
-            <article className="resume-item" key={experience.title}>
+            <article className="resume-item" data-nav-section="experience" key={experience.title}>
               <div className="resume-date">
                 <Icon size={18} aria-hidden="true" />
                 <span>{experience.period}</span>

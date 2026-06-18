@@ -660,11 +660,38 @@ main {
   object-fit: cover;
 }
 
+.project-media-slider iframe,
+.project-video-mockup iframe,
+.project-media iframe,
+.project-visual iframe,
+.project-card iframe,
+.project-video:is(iframe) {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 0;
+  display: block;
+}
+
+.project-media-slider,
+.project-video-mockup,
+.project-media,
+.project-visual {
+  position: relative;
+  overflow: hidden;
+}
+
 .project-video,
 .project-video-mockup video,
+.project-video-mockup img,
+.project-video-mockup iframe,
 .project-media video,
+.project-media img,
 .project-media iframe,
+.project-visual iframe,
+.project-visual img,
 .project-visual video,
+.project-card iframe,
 .project-media-slider video,
 .project-media-slider iframe,
 .project-media-slider img {
@@ -672,6 +699,13 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.project-video-mockup iframe,
+.project-media iframe,
+.project-visual iframe,
+.project-media-slider iframe {
+  border: 0;
 }
 
 .project-video-mockup {

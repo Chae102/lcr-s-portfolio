@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Project, ProjectMedia } from "../data/projects";
-import { getYoutubeEmbedUrl } from "../utils/video";
+import { getYouTubeEmbedUrl } from "../utils/youtube";
 import { ProjectVideoMockup } from "./ProjectVideoMockup";
 
 type ProjectMediaSliderProps = {
@@ -46,7 +46,6 @@ export function ProjectMediaSlider({ media, fallbackVideoSrc, visualType, title 
 
   const currentItem = items[currentIndex] ?? items[0];
   const hasMultipleItems = items.length > 1;
-  const youtubeEmbedUrl = currentItem.type === "video" ? getYoutubeEmbedUrl(currentItem.src) : null;
 
   const goPrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -59,15 +58,17 @@ export function ProjectMediaSlider({ media, fallbackVideoSrc, visualType, title 
   return (
     <div className="project-media-slider">
       <div className="project-media-slide">
-        {youtubeEmbedUrl ? (
+        {currentItem.type === "youtube" ? (
           <iframe
-            src={youtubeEmbedUrl}
-            title={currentItem.alt ?? `${title} project detail video`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            key={`${currentIndex}-${currentItem.src}`}
+            src={getYouTubeEmbedUrl(currentItem.src)}
+            title={currentItem.alt ?? `${title} YouTube video`}
+            allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
           />
         ) : currentItem.type === "video" ? (
           <video
+            key={`${currentIndex}-${currentItem.src}`}
             src={currentItem.src}
             poster={currentItem.poster}
             {...autoPlayVideoProps}

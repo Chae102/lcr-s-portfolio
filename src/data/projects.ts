@@ -1,7 +1,7 @@
 export type ProjectVisualType = "rewind" | "robot" | "seogaro" | "rarepick" | "dashboard" | "house";
 
 export type ProjectMedia = {
-  type: "video" | "image";
+  type: "video" | "image" | "youtube";
   src: string;
   poster?: string;
   alt?: string;
@@ -94,6 +94,18 @@ export const projects: Project[] = [
       "API 요청은 항상 성공하지 않기 때문에 로딩과 에러 처리가 중요하다는 점을 배웠습니다.",
       "여러 컴포넌트에서 공유하는 상태는 Context로 관리하면 편하다는 것을 이해했습니다.",
       "화면 구성에서는 기능만큼 사용자 흐름과 정보 배치가 중요하다는 점을 느꼈습니다.",
+    ],
+    media: [
+      {
+        type: "youtube",
+        src: "https://youtu.be/ORr9f2Nok90",
+        alt: "REWIND preview video 1",
+      },
+      {
+        type: "youtube",
+        src: "https://youtu.be/LdeaN4KBwPA",
+        alt: "REWIND preview video 2",
+      },
     ],
     visualType: "rewind",
   },
@@ -275,22 +287,22 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "video",
-        src: "/videos/ari_1.mp4",
-        alt: "A.R.I. rescue robot demo video 1",
-        caption: "Demo 1",
+        type: "youtube",
+        src: "https://youtu.be/Y4N6PdhFPIQ",
+        alt: "A.R.I. 재난대응 로봇 시연 영상 1",
+        caption: "A.R.I. 시연 1",
       },
       {
-        type: "video",
-        src: "/videos/ari_2.mp4",
-        alt: "A.R.I. rescue robot demo video 2",
-        caption: "Demo 2",
+        type: "youtube",
+        src: "https://youtube.com/shorts/EzCVKfs1x_o?feature=share",
+        alt: "A.R.I. 재난대응 로봇 시연 영상 2",
+        caption: "A.R.I. 시연 2",
       },
       {
-        type: "video",
-        src: "/videos/ari_3.mp4",
-        alt: "A.R.I. rescue robot demo video 3",
-        caption: "Demo 3",
+        type: "youtube",
+        src: "https://youtube.com/shorts/FF0AEknFq-Q",
+        alt: "A.R.I. 재난대응 로봇 시연 영상 3",
+        caption: "A.R.I. 시연 3",
       },
     ],
     videoSrc: "/videos/ari_1.mp4",
@@ -363,10 +375,10 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "video",
-        src: "/videos/rarepick.mp4",
-        alt: "RarePick project demo video",
-        caption: "Demo",
+        type: "youtube",
+        src: "https://youtu.be/pntru3ntlzw",
+        alt: "RarePick 프로젝트 시연 영상",
+        caption: "RarePick 시연 영상",
       },
     ],
     videoSrc: "/videos/rarepick.mp4",
@@ -398,16 +410,16 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "video",
-        src: "/videos/google_1.mp4",
-        alt: "Google dashboard project demo video 1",
-        caption: "Dashboard view",
+        type: "youtube",
+        src: "https://youtu.be/twroPzUPP3o",
+        alt: "맞춤형 구글 대시보드 시연 영상 1",
+        caption: "대시보드 시연 1",
       },
       {
-        type: "video",
-        src: "/videos/google_2.mp4",
-        alt: "Google dashboard project demo video 2",
-        caption: "Interaction flow",
+        type: "youtube",
+        src: "https://youtu.be/T_Kn-veXzvI",
+        alt: "맞춤형 구글 대시보드 시연 영상 2",
+        caption: "대시보드 시연 2",
       },
     ],
     videoSrc: "/videos/google_1.mp4",
@@ -498,22 +510,22 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "video",
-        src: "/videos/comma_1.mp4",
-        alt: "Comma House main page demo video",
-        caption: "Main page",
+        type: "youtube",
+        src: "https://youtu.be/rp_jlRk9t2I",
+        alt: "쉼표하우스 숙소 예약 웹사이트 시연 영상 1",
+        caption: "쉼표하우스 시연 1",
       },
       {
-        type: "video",
-        src: "/videos/comma_2.mp4",
-        alt: "Comma House reservation flow demo video",
-        caption: "Reservation flow",
+        type: "youtube",
+        src: "https://youtu.be/aR-elTYz-sc",
+        alt: "쉼표하우스 숙소 예약 웹사이트 시연 영상 2",
+        caption: "쉼표하우스 시연 2",
       },
       {
-        type: "video",
-        src: "/videos/comma_3.mp4",
-        alt: "Comma House detail page demo video",
-        caption: "Detail page",
+        type: "youtube",
+        src: "https://youtu.be/d2GmzGZYtpM",
+        alt: "쉼표하우스 숙소 예약 웹사이트 시연 영상 3",
+        caption: "쉼표하우스 시연 3",
       },
     ],
     videoSrc: "/videos/comma_1.mp4",

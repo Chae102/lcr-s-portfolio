@@ -1,5 +1,5 @@
 import type { Project, ProjectVisualType } from "../data/projects";
-import { getYoutubeEmbedUrl } from "../utils/video";
+import { getYouTubeEmbedUrl } from "../utils/youtube";
 
 type ProjectVideoMockupProps = {
   project?: Project;
@@ -56,18 +56,18 @@ const autoPlayVideoProps = {
 export function ProjectVideoMockup({ project, videoSrc, imageSrc, poster, alt, title, visualType }: ProjectVideoMockupProps) {
   const resolvedTitle = title ?? project?.title ?? "Project";
   const resolvedVisualType = visualType ?? project?.visualType ?? "rewind";
-  const previewMedia = project?.media?.find((item) => item.type === "video") ?? project?.media?.[0];
+  const previewMedia = project?.media?.[0];
+  const resolvedYoutubeSrc = previewMedia?.type === "youtube" ? previewMedia.src : undefined;
   const resolvedVideoSrc = videoSrc ?? (previewMedia?.type === "video" ? previewMedia.src : undefined) ?? project?.videoSrc;
   const resolvedImageSrc = imageSrc ?? (previewMedia?.type === "image" ? previewMedia.src : undefined);
   const resolvedPoster = poster ?? (previewMedia?.type === "video" ? previewMedia.poster : undefined) ?? project?.videoPoster;
   const resolvedAlt = alt ?? previewMedia?.alt;
-  const youtubeEmbedUrl = resolvedVideoSrc ? getYoutubeEmbedUrl(resolvedVideoSrc) : null;
 
-  if (youtubeEmbedUrl) {
+  if (resolvedYoutubeSrc) {
     return (
       <iframe
         className="project-video"
-        src={youtubeEmbedUrl}
+        src={getYouTubeEmbedUrl(resolvedYoutubeSrc)}
         title={resolvedAlt ?? `${resolvedTitle} project preview video`}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen

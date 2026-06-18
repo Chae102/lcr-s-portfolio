@@ -1,14 +1,14 @@
-export function getYoutubeEmbedUrl(src: string) {
+export function getYouTubeEmbedUrl(src: string) {
   try {
     const url = new URL(src);
     const hostname = url.hostname.replace(/^www\./, "");
     let videoId: string | null = null;
 
-    if (hostname === "youtu.be") {
+    if (hostname === "youtu.be" || hostname.endsWith(".youtu.be")) {
       videoId = url.pathname.split("/").filter(Boolean)[0] ?? null;
     }
 
-    if (hostname === "youtube.com" || hostname === "m.youtube.com") {
+    if (hostname === "youtube.com" || hostname.endsWith(".youtube.com")) {
       if (url.pathname === "/watch") {
         videoId = url.searchParams.get("v");
       } else {
@@ -38,3 +38,5 @@ export function getYoutubeEmbedUrl(src: string) {
     return null;
   }
 }
+
+export const getYoutubeEmbedUrl = getYouTubeEmbedUrl;

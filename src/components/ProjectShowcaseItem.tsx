@@ -24,6 +24,7 @@ export function ProjectShowcaseItem({ project, index }: ProjectShowcaseItemProps
   return (
     <motion.article
       className={`project-showcase-item project-summary-card project-${project.slug} ${isReversed ? "is-reversed" : ""}`}
+      data-nav-section="projects"
       initial={reduceMotion ? false : { opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.24 }}
