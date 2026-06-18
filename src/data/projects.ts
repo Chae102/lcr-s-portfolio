@@ -20,6 +20,7 @@ export type Project = {
   role?: string;
   roleDescription?: string;
   roles?: string[];
+  status?: string;
   tags: string[];
   cardTags?: string[];
   summary: string;
@@ -304,6 +305,7 @@ export const projects: Project[] = [
     period: "2026.06",
     members: "개인",
     role: "서비스 기획 및 Frontend 개발",
+    status: "프로젝트 기획중",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     summary:
       "사용자가 책을 검색하면 주변 도서관의 대출 가능 여부를 확인하고, 실제 도서관 방문으로 이어지도록 돕는 O2O 독서 플랫폼입니다.",
@@ -325,16 +327,6 @@ export const projects: Project[] = [
       "서비스 기획 단계에서 사용자가 실제로 행동하게 만드는 흐름이 중요하다는 점을 배웠습니다.",
       "기능보다 서비스의 목적과 사용자 경험이 먼저 정리되어야 한다는 점을 느꼈습니다.",
     ],
-    media: [
-      {
-        type: "video",
-        src: "https://youtu.be/YA7eyigfETA",
-        alt: "Seogaro project demo video",
-        caption: "Demo",
-      },
-    ],
-    videoSrc: "https://youtu.be/YA7eyigfETA",
-    videoGallery: ["https://youtu.be/YA7eyigfETA"],
     visualType: "seogaro",
   },
   {

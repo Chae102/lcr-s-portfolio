@@ -141,6 +141,7 @@ export function ProjectDetailPage() {
           <p className="detail-hero-subtitle">{project.subtitle}</p>
           <p className="detail-hero-meta">
             {metaLine}
+            {project.status ? ` · ${project.status}` : ""}
             {project.award ? ` · ${project.award}` : ""}
             {project.awardDate ? ` · ${project.awardDate}` : ""}
           </p>
@@ -205,6 +206,12 @@ export function ProjectDetailPage() {
                 {project.award}
                 {project.awardDate ? ` · ${project.awardDate}` : ""}
               </strong>
+            </div>
+          ) : null}
+          {project.status ? (
+            <div>
+              <span>Status</span>
+              <strong>{project.status}</strong>
             </div>
           ) : null}
           {hasLinks ? (

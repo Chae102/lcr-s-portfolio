@@ -18,12 +18,16 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55 }}
       >
-        <div
-          className="hero-symbol hero-symbol-fallback"
-          aria-label="이채린 포트폴리오 심볼"
-        >
-          CL
-        </div>
+        <video
+          className="hero-symbol hero-face-video"
+          src="/videos/face.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Chaerin Lee profile video"
+        />
       </motion.div>
 
       <motion.div

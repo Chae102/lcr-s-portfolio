@@ -19,7 +19,21 @@ export function getYoutubeEmbedUrl(src: string) {
       }
     }
 
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    if (!videoId) {
+      return null;
+    }
+
+    const params = new URLSearchParams({
+      autoplay: "1",
+      controls: "0",
+      loop: "1",
+      mute: "1",
+      playsinline: "1",
+      playlist: videoId,
+      rel: "0",
+    });
+
+    return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
   } catch {
     return null;
   }

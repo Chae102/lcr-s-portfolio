@@ -14,6 +14,7 @@ export function ProjectShowcaseItem({ project, index }: ProjectShowcaseItemProps
   const isReversed = index % 2 === 1;
   const projectNumber = String(index + 1).padStart(2, "0");
   const featuredTags = project.cardTags ?? project.tags.slice(0, 6);
+  const statusLabel = project.status ?? project.award;
   const titleLength = [...project.title].length;
   const previewTitleClass =
     titleLength > 14 ? "project-preview-title is-extra-long" : titleLength > 7 ? "project-preview-title is-long" : "project-preview-title";
@@ -44,7 +45,7 @@ export function ProjectShowcaseItem({ project, index }: ProjectShowcaseItemProps
             <h3 className={contentTitleClass}>{project.title}</h3>
             {project.englishTitle ? <p className="project-english">{project.englishTitle}</p> : null}
           </div>
-          {project.award ? <span className="status-pill">{project.award}</span> : null}
+          {statusLabel ? <span className="status-pill">{statusLabel}</span> : null}
         </div>
 
         <p className="project-summary">{project.subtitle}</p>

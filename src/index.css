@@ -122,6 +122,18 @@ main {
   overflow: visible;
 }
 
+.top-face-video {
+  width: 100%;
+  background: #09090b;
+}
+
+.top-face-video__media {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 760px);
+  object-fit: cover;
+}
+
 .focus-ring:focus-visible {
   outline: 3px solid rgba(24, 24, 27, 0.32);
   outline-offset: 4px;
@@ -301,6 +313,14 @@ main {
   font-size: clamp(2.4rem, 5vw, 4.5rem);
   font-weight: 950;
   box-shadow: 0 22px 54px rgba(79, 109, 245, 0.14);
+}
+
+.hero-face-video {
+  width: clamp(144px, 15.6vw, 240px);
+  height: clamp(144px, 15.6vw, 240px);
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 22px 54px rgba(24, 24, 27, 0.12);
 }
 
 .hero-copy {
@@ -4579,6 +4599,28 @@ h3,
 
 .contact-email-wave {
   font-weight: 400;
+}
+
+.hero-mark {
+  min-height: clamp(176px, 18vw, 260px);
+}
+
+.hero-symbol.hero-face-video {
+  width: clamp(144px, 15.6vw, 240px);
+  height: clamp(144px, 15.6vw, 240px);
+  max-height: 240px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .hero-mark {
+    min-height: 220px;
+  }
+
+  .hero-symbol.hero-face-video {
+    width: clamp(132px, 41vw, 192px);
+    height: clamp(132px, 41vw, 192px);
+  }
 }
 
 /* Final typography pass */
