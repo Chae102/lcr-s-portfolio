@@ -1,23 +1,15 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Project, ProjectMedia } from "../data/projects";
-import { getYouTubeEmbedUrl } from "../utils/youtube";
+import { ProjectAutoPlayVideo } from "./ProjectAutoPlayVideo";
 import { ProjectVideoMockup } from "./ProjectVideoMockup";
+import { YouTubePreview } from "./YouTubePreview";
 
 type ProjectMediaSliderProps = {
   media?: ProjectMedia[];
   fallbackVideoSrc?: string;
   visualType?: Project["visualType"];
   title: string;
-};
-
-const autoPlayVideoProps = {
-  autoPlay: true,
-  muted: true,
-  defaultMuted: true,
-  loop: true,
-  playsInline: true,
-  preload: "auto",
 };
 
 export function ProjectMediaSlider({ media, fallbackVideoSrc, visualType, title }: ProjectMediaSliderProps) {
@@ -59,20 +51,18 @@ export function ProjectMediaSlider({ media, fallbackVideoSrc, visualType, title 
     <div className="project-media-slider">
       <div className="project-media-slide">
         {currentItem.type === "youtube" ? (
-          <iframe
+          <YouTubePreview
             key={`${currentIndex}-${currentItem.src}`}
-            src={getYouTubeEmbedUrl(currentItem.src)}
+            src={currentItem.src}
             title={currentItem.alt ?? `${title} YouTube video`}
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen
+            className="project-video"
           />
         ) : currentItem.type === "video" ? (
-          <video
+          <ProjectAutoPlayVideo
             key={`${currentIndex}-${currentItem.src}`}
             src={currentItem.src}
             poster={currentItem.poster}
-            {...autoPlayVideoProps}
-            aria-label={currentItem.alt ?? `${title} project detail video`}
+            label={currentItem.alt ?? `${title} project detail video`}
           />
         ) : (
           <img src={currentItem.src} alt={currentItem.alt ?? `${title} project image`} />

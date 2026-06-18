@@ -379,9 +379,24 @@ main {
   gap: 8px;
   color: #565b64;
   font-weight: 850;
+  border: 0;
+  cursor: pointer;
   transition:
     color 180ms ease,
     transform 180ms ease;
+}
+
+.email-copy-button {
+  appearance: none;
+  font: inherit;
+}
+
+.copy-status {
+  align-self: center;
+  min-height: 1.2em;
+  color: var(--color-primary);
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
 .text-link:hover {
@@ -658,6 +673,91 @@ main {
 
 .project-video {
   object-fit: cover;
+}
+
+.local-video-preview,
+.youtube-player-preview {
+  position: relative;
+  isolation: isolate;
+}
+
+.local-video-preview video,
+.youtube-player-preview iframe {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.local-video-preview video {
+  object-fit: cover;
+}
+
+.video-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+
+.local-video-preview.is-playing .video-thumbnail-overlay,
+.youtube-player-preview.is-loaded .video-thumbnail-overlay {
+  opacity: 0;
+}
+
+.youtube-preview {
+  position: relative;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.youtube-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.youtube-preview::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.04), rgba(9, 9, 11, 0.36));
+  content: "";
+}
+
+.youtube-preview__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  width: 68px;
+  height: 68px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #09090b;
+  box-shadow: 0 18px 42px rgba(9, 9, 11, 0.28);
+  transform: translate(-50%, -50%);
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.youtube-preview:hover .youtube-preview__play,
+.youtube-preview:focus-visible .youtube-preview__play {
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .project-media-slider iframe,
@@ -1978,17 +2078,28 @@ main {
   text-transform: uppercase;
 }
 
-.footer a {
+.footer a,
+.footer-link-button {
   display: block;
   width: fit-content;
   margin-top: 9px;
+  border: 0;
+  padding: 0;
+  background: transparent;
   color: #747983;
   font-size: 0.9rem;
   font-weight: 650;
+  cursor: pointer;
 }
 
-.footer a:hover {
+.footer a:hover,
+.footer-link-button:hover {
   color: var(--blue);
+}
+
+.footer-copy-status {
+  display: block;
+  margin-top: 9px;
 }
 
 .copyright {

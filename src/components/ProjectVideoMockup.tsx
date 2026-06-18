@@ -1,5 +1,6 @@
 import type { Project, ProjectVisualType } from "../data/projects";
-import { getYouTubeEmbedUrl } from "../utils/youtube";
+import { ProjectAutoPlayVideo } from "./ProjectAutoPlayVideo";
+import { YouTubePreview } from "./YouTubePreview";
 
 type ProjectVideoMockupProps = {
   project?: Project;
@@ -44,15 +45,6 @@ const mockupCopy = {
   },
 } satisfies Record<ProjectVisualType, { label: string; detail: string; extra: string }>;
 
-const autoPlayVideoProps = {
-  autoPlay: true,
-  muted: true,
-  defaultMuted: true,
-  loop: true,
-  playsInline: true,
-  preload: "auto",
-};
-
 export function ProjectVideoMockup({ project, videoSrc, imageSrc, poster, alt, title, visualType }: ProjectVideoMockupProps) {
   const resolvedTitle = title ?? project?.title ?? "Project";
   const resolvedVisualType = visualType ?? project?.visualType ?? "rewind";
@@ -65,24 +57,22 @@ export function ProjectVideoMockup({ project, videoSrc, imageSrc, poster, alt, t
 
   if (resolvedYoutubeSrc) {
     return (
-      <iframe
+      <YouTubePreview
         className="project-video"
-        src={getYouTubeEmbedUrl(resolvedYoutubeSrc)}
+        src={resolvedYoutubeSrc}
         title={resolvedAlt ?? `${resolvedTitle} project preview video`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
+        isInteractive={false}
       />
     );
   }
 
   if (resolvedVideoSrc) {
     return (
-      <video
+      <ProjectAutoPlayVideo
         className="project-video"
         src={resolvedVideoSrc}
         poster={resolvedPoster}
-        {...autoPlayVideoProps}
-        aria-label={resolvedAlt ?? `${resolvedTitle} project preview video`}
+        label={resolvedAlt ?? `${resolvedTitle} project preview video`}
       />
     );
   }
