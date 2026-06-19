@@ -339,6 +339,13 @@ export const projects: Project[] = [
       "서비스 기획 단계에서 사용자가 실제로 행동하게 만드는 흐름이 중요하다는 점을 배웠습니다.",
       "기능보다 서비스의 목적과 사용자 경험이 먼저 정리되어야 한다는 점을 느꼈습니다.",
     ],
+    media: [
+      {
+        type: "image",
+        src: "/images/seogaro.png",
+        alt: "서가로 프로젝트 미리보기 이미지",
+      },
+    ],
     visualType: "seogaro",
   },
   {

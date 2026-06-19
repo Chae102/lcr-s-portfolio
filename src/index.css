@@ -4111,7 +4111,7 @@ h3,
 .hero-shell {
   min-height: 92vh;
   width: min(100% - var(--container-padding), 960px);
-  padding: clamp(72px, 9vh, 120px) 0 clamp(48px, 7vh, 88px);
+  padding: clamp(88px, 11vh, 144px) 0 clamp(48px, 7vh, 88px);
 }
 
 .hero-mark {
@@ -4334,7 +4334,7 @@ h3,
 
   .hero-shell {
     min-height: 88vh;
-    padding: 68px 0 48px;
+    padding: 84px 0 48px;
   }
 
   .hero-mark {
