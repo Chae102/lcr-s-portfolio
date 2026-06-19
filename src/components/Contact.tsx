@@ -1,17 +1,51 @@
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { GitBranch, Mail, NotebookTabs } from "lucide-react";
 import { Section } from "./Section";
 
 const email = "coth4498@naver.com";
+const notionUrl = "https://app.notion.com/p/PortFolio-b4398896a76e8229b0568142e8c56173?source=copy_link";
 
 const contactLinks = [
-  { label: "Email", href: `mailto:${email}`, icon: Mail },
+  { label: "Email", action: "copyEmail", icon: Mail },
   { label: "GitHub", href: "https://github.com/Chae102", icon: GitBranch },
-  { label: "Notion", href: "https://app.notion.com/p/36198896a76e8082968ef10ee1b78656", icon: NotebookTabs },
+  { label: "Notion", href: notionUrl, icon: NotebookTabs },
 ];
+
+async function copyEmailToClipboard() {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(email);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = email;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+}
 
 export function Contact() {
   const shouldReduceMotion = useReducedMotion();
+  const [isEmailCopied, setIsEmailCopied] = useState(false);
+
+  useEffect(() => {
+    if (!isEmailCopied) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => setIsEmailCopied(false), 1800);
+    return () => window.clearTimeout(timeoutId);
+  }, [isEmailCopied]);
+
+  const handleEmailCopy = async () => {
+    await copyEmailToClipboard();
+    setIsEmailCopied(true);
+  };
 
   return (
     <Section id="contact" title="CONTACT" variant="showcase">
@@ -54,6 +88,22 @@ export function Contact() {
           <div className="contact-actions">
             {contactLinks.map((link) => {
               const Icon = link.icon;
+              if ("action" in link) {
+                return (
+                  <button
+                    key={link.label}
+                    className="arrow-link focus-ring"
+                    type="button"
+                    onClick={handleEmailCopy}
+                    aria-describedby="contact-email-copy-status"
+                  >
+                    <Icon size={16} aria-hidden="true" />
+                    {link.label}
+                    <span aria-hidden="true">→</span>
+                  </button>
+                );
+              }
+
               return (
                 <a
                   key={link.label}
@@ -68,6 +118,9 @@ export function Contact() {
                 </a>
               );
             })}
+            <span id="contact-email-copy-status" className="copy-status" role="status" aria-live="polite">
+              {isEmailCopied ? "이메일복사완료" : ""}
+            </span>
           </div>
         </div>
       </div>

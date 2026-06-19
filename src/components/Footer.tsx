@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const email = "coth4498@naver.com";
-const notionUrl = "https://app.notion.com/p/38198896a76e80f0aeb3dca2a4d5fc4e?source=copy_link";
+const notionUrl = "https://app.notion.com/p/PortFolio-b4398896a76e8229b0568142e8c56173?source=copy_link";
 
 const quickLinks = [
   { id: "about", label: "About" },
