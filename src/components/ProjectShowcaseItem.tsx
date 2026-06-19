@@ -60,6 +60,12 @@ export function ProjectShowcaseItem({ project, index }: ProjectShowcaseItemProps
             <dt>인원</dt>
             <dd>{project.members}</dd>
           </div>
+          {project.role ? (
+            <div>
+              <dt>Role</dt>
+              <dd>{project.role}</dd>
+            </div>
+          ) : null}
         </dl>
 
         <div className="chip-row" aria-label={`${project.title} 대표 기술스택`}>
